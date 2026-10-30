@@ -1,0 +1,13 @@
+#!/bin/bash
+# Pre-commit Hook: Rejects commits if staged changes contain TODO or FIXME
+staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+for file in $staged_files; do
+  [[ "$file" =~ ^\.githooks/ ]] && continue
+  if git diff --cached "$file" | grep -E "^\+[^+]" | grep -E -q "TODO|FIXME"; then
+    echo "[PRE-COMMIT ERROR] Commit rejected:"
+    echo "Staged file '$file' contains unresolved 'TODO' or 'FIXME' annotations."
+    echo "Please complete or remove these annotations before committing."
+    exit 1
+  fi
+done
+exit 0
