@@ -9,3 +9,11 @@ __pycache__/
 env/
 venv/
 ENV/
+
+# Diagnostic logs and temp artifacts
+*.log
+logs/
+
+# Backup, swap and cache files
+*.bak
+*.tmp
