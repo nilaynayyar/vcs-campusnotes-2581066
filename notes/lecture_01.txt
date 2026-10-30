@@ -1,0 +1,3 @@
+Lecture 01: Introduction to Git and Distributed Version Control
+- Working Directory, Staging Area, Local Repository
+- Commits as immutable snapshots
